@@ -34,3 +34,10 @@ Overall, these resources provide a foundation for systematic analysis of NLP mod
 In addition to the released resources, we provide scripts to recreate the datasets following the same construction procedure. The repository includes both the dataset construction pipeline and a Datasets+Splits/ directory containing the available datasets and splits required to initialize the construction process and to reproduce the experimental results reported in the paper. The splits include train_group / test_group, which correspond to group-based (paper-level) splits designed to prevent leakage, and train_stratified / test_stratified, which correspond to random stratified splits used for comparative evaluation. Due to repository storage constraints, the full EarlyBird and Task2Model datasets are hosted externally on Zenodo; a DOI will be added here upon final release.
 
 The dataset is constructed using the scripts provided in the dataset construction/ directory, which contains 14 sequential pipeline files covering model mention extraction, context construction, masking, filtering, and label normalization. To reproduce the results reported in the paper, the Initial-Classification/, TF-IDFandSVM_Classification/, and Model Retrieval/ directories provide the corresponding baseline implementations and evaluation code.
+
+## Dataset Availability
+
+The EarlyBird and Task2Model datasets are archived on Zenodo:
+https://doi.org/10.5281/zenodo.18517685
+
+The complete dataset construction and preprocessing pipeline is available in this repository.
