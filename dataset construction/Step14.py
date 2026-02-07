@@ -5,7 +5,7 @@ import json
 
 HERE = Path(__file__).resolve().parent
 INPUT = HERE / "output_clean_with_paper_id_min200chars_corrected_with_family_mapped_all.csv"
-OUTPUT = HERE / "output_clean_with_paper_id_min200chars_corrected_with_family_mapped_all_filtered.csv"
+OUTPUT = HERE / "Task2Model.csv"
 
 EXCLUDE = {"turbo", "test1", "test2", "testmodel", "glider", "ppo2", "factcc", "factkb"}
 CHUNK = 10000
