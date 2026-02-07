@@ -30,3 +30,7 @@ Linking model mentions to their scientific task contexts for downstream empirica
 
 Overall, these resources provide a foundation for systematic analysis of NLP model usage in scientific publications and for the development and evaluation of task-to-model recommendation and benchmarking methods.
 
+
+In addition to the released resources, we provide scripts to recreate the datasets following the same construction procedure. The repository includes both the dataset construction pipeline and a Datasets+Splits/ directory containing the available datasets and splits required to initialize the construction process and to reproduce the experimental results reported in the paper. The splits include train_group / test_group, which correspond to group-based (paper-level) splits designed to prevent leakage, and train_stratified / test_stratified, which correspond to random stratified splits used for comparative evaluation. Due to repository storage constraints, the full EarlyBird and Task2Model datasets are hosted externally on Zenodo; a DOI will be added here upon final release.
+
+The dataset is constructed using the scripts provided in the dataset construction/ directory, which contains 14 sequential pipeline files covering model mention extraction, context construction, masking, filtering, and label normalization. To reproduce the results reported in the paper, the Initial-Classification/, TF-IDFandSVM_Classification/, and Model Retrieval/ directories provide the corresponding baseline implementations and evaluation code.
