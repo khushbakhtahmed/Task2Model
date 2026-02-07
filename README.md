@@ -1,43 +1,51 @@
-We release EarlyBird and Task2Model, two datasets derived from scientific publications that document how NLP models are mentioned and linked to scientific tasks in the research literature.
+📦 Released Datasets: EarlyBird & Task2Model
 
-EarlyBird (EarlyBird Model Mention Dataset) is an intermediate dataset that captures all detected mentions of NLP models within individual scientific papers. Each entry is accompanied by rich metadata, including paper identifiers, section indicators, and model mention counts, enabling fine-grained analyses of model usage, reporting practices, and mention patterns across the scientific literature.
+We release EarlyBird and Task2Model, two datasets derived from scientific publications that document how NLP models are mentioned and how they are linked to scientific tasks in the research literature.
 
-Building on this resource, we further release Task2Model, a large-scale dataset of scientific problem descriptions or tasks linked to NLP models.Task2Model emphasizes hierarchical and family-level evaluation, systematic quality audits, and explicit leakage-prevention measures, providing a reliable framework for benchmarking task-to-model mapping approaches. The dataset comprises more than 99,000 scientific problem descriptions associated with over 500 unique NLP models.
+🐦 EarlyBird: Model Mention Dataset
 
-Each row in the Task2Model dataset contains a cleaned and filtered text snippet with the model name masked, capturing a scientific task or problem context, along with associated metadata.
+<strong>EarlyBird (EarlyBird Model Mention Dataset)</strong> is an intermediate dataset that captures all detected mentions of NLP models within individual scientific papers.
 
-Columns:
+Each entry is enriched with structured metadata, including:
 
-Scientific_problem_descriptions: Cleaned and filtered text snippets in which the model name is masked, capturing a scientific task or problem context.
-Full_ID: Canonical full identifier of the NLP model associated with the task (e.g., openai-community/gpt2).
-Short_ID: Normalized short identifier of the model, used as a collapsed label for analysis (e.g., gpt2).
-paper_id: Identifier linking the task description to the original scientific publication.
-family_label: Higher-level model family corresponding to the model (e.g., BERT, GPT, LLaMA), enabling hierarchical and family-level evaluation.
+<ul> <li><strong>Paper identifiers</strong></li> <li><strong>Section indicators</strong></li> <li><strong>Model mention counts</strong></li> </ul>
 
-Purpose and Use Cases:
+This enables fine-grained analyses of <em>model usage patterns</em>, <em>reporting practices</em>, and <em>mention behavior</em> across the scientific literature.
+
+🔗 Task2Model: Scientific Tasks to Models
+
+Building on EarlyBird, we further release <strong>Task2Model</strong>, a large-scale dataset of scientific problem descriptions (tasks) linked to NLP models.
+
+Task2Model emphasizes:
+
+<ul> <li><strong>Hierarchical and family-level evaluation</strong></li> <li><strong>Systematic quality audits</strong></li> <li><strong>Explicit leakage-prevention measures</strong></li> </ul>
+
+Together, these design choices provide a reliable framework for benchmarking <em>task-to-model mapping</em> approaches.
+
+<p> The dataset comprises <strong>more than 99,000</strong> scientific problem descriptions associated with <strong>over 500</strong> unique NLP models. </p>
+
+Each row in Task2Model contains a <strong>cleaned and filtered text snippet</strong>, with the model name <em>masked</em>, capturing a scientific task or problem context along with associated metadata.
+
+📊 Dataset Schema (Task2Model)
+<ul> <li> <strong><code>Scientific_problem_descriptions</code></strong><br/> Cleaned and filtered text snippets with the model name masked, capturing a scientific task or problem context. </li> <li> <strong><code>Full_ID</code></strong><br/> Canonical full identifier of the NLP model (e.g., <code>openai-community/gpt2</code>). </li> <li> <strong><code>Short_ID</code></strong><br/> Normalized short identifier used as a collapsed label (e.g., <code>gpt2</code>). </li> <li> <strong><code>paper_id</code></strong><br/> Identifier linking the task description to the original scientific publication. </li> <li> <strong><code>family_label</code></strong><br/> Higher-level model family (e.g., <code>BERT</code>, <code>GPT</code>, <code>LLaMA</code>), enabling hierarchical and family-level evaluation. </li> </ul>
+🎯 Purpose and Use Cases
 
 These datasets are designed to support research on how NLP models are mentioned, reported, and applied in scientific literature. They can be used for:
 
-Analyzing trends and common usage patterns of NLP models in research.
+<ul> <li>Analyzing trends and common usage patterns of NLP models</li> <li>Studying reporting practices and model adoption across scientific domains</li> <li>Grouping models by families for aggregated and hierarchical analyses</li> <li>Training and evaluating systems for model mention recognition</li> <li>Benchmarking task-to-model mapping methods</li> <li>Linking model mentions to scientific task contexts for downstream empirical studies</li> </ul>
 
-Studying reporting practices and model adoption across scientific domains.
+Overall, these resources provide a foundation for <strong>systematic analysis of NLP model usage</strong> and for the development and evaluation of <strong>task-to-model recommendation and benchmarking methods</strong>.
 
-Grouping models by families for aggregated and hierarchical analyses.
+⚙️ Reproducibility & Repository Structure
 
-Training and evaluating systems for model mention recognition and task-to-model mapping.
+In addition to the datasets, we provide <strong>scripts to recreate the datasets</strong> following the same construction procedure.
 
-Linking model mentions to their scientific task contexts for downstream empirical studies.
+<ul> <li> The <code>dataset construction/</code> directory contains <strong>14 sequential pipeline scripts</strong> covering: <ul> <li>Model mention extraction</li> <li>Context construction</li> <li>Masking</li> <li>Filtering</li> <li>Label normalization</li> </ul> </li> <li> The <code>Datasets+Splits/</code> directory contains the datasets and splits required to initialize the construction process and reproduce the experimental results. </li> </ul>
+Available Splits
+<ul> <li> <strong><code>train_group</code> / <code>test_group</code></strong><br/> Group-based (paper-level) splits designed to prevent leakage. </li> <li> <strong><code>train_stratified</code> / <code>test_stratified</code></strong><br/> Random stratified splits used for comparative evaluation. </li> </ul>
 
-Overall, these resources provide a foundation for systematic analysis of NLP model usage in scientific publications and for the development and evaluation of task-to-model recommendation and benchmarking methods.
+To reproduce the results reported in the paper, the repository also includes:
 
+<ul> <li><code>Initial-Classification/</code></li> <li><code>TF-IDFandSVM_Classification/</code></li> <li><code>Model Retrieval/</code></li> </ul>
 
-In addition to the released resources, we provide scripts to recreate the datasets following the same construction procedure. The repository includes both the dataset construction pipeline and a Datasets+Splits/ directory containing the available datasets and splits required to initialize the construction process and to reproduce the experimental results reported in the paper. The splits include train_group / test_group, which correspond to group-based (paper-level) splits designed to prevent leakage, and train_stratified / test_stratified, which correspond to random stratified splits used for comparative evaluation. Due to repository storage constraints, the full EarlyBird and Task2Model datasets are hosted externally on Zenodo; a DOI will be added here upon final release.
-
-The dataset is constructed using the scripts provided in the dataset construction/ directory, which contains 14 sequential pipeline files covering model mention extraction, context construction, masking, filtering, and label normalization. To reproduce the results reported in the paper, the Initial-Classification/, TF-IDFandSVM_Classification/, and Model Retrieval/ directories provide the corresponding baseline implementations and evaluation code.
-
-## Dataset Availability
-
-The EarlyBird and Task2Model datasets are archived on Zenodo:
-https://doi.org/10.5281/zenodo.18517685
-
-The complete dataset construction and preprocessing pipeline is available in this repository.
+These directories provide the corresponding baseline implementations and evaluation code.
