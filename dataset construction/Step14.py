@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import pandas as pd
-from collections import Counter
+import json
 
 HERE = Path(__file__).resolve().parent
 INPUT = HERE / "output_clean_with_paper_id_min200chars_corrected_with_family_mapped_all.csv"
@@ -10,7 +10,6 @@ OUTPUT = HERE / "output_clean_with_paper_id_min200chars_corrected_with_family_ma
 EXCLUDE = {"turbo", "test1", "test2", "testmodel", "glider", "ppo2", "factcc", "factkb"}
 CHUNK = 10000
 
-# helper to choose collapsed label column
 def choose_collapsed_col(cols):
     lower = [c.lower() for c in cols]
     for candidate in ["collapsed label", "collapsed_label", "collapsed", "label", "class"]:
@@ -25,29 +24,26 @@ if not INPUT.exists():
 # read header
 df0 = pd.read_csv(INPUT, nrows=0)
 cols = list(df0.columns)
+
 collapsed_col = choose_collapsed_col(cols)
 if collapsed_col is None:
     print("Could not determine collapsed label column. Columns:", cols)
     raise SystemExit(1)
 
-# detect family column
 family_col = None
 for c in cols:
     if c.lower() in ("family label", "family_label", "family"):
         family_col = c
         break
 if family_col is None:
-    # we still proceed but family counts may be unavailable
     print("Warning: family column not found. Expected 'family label'.")
 
-# detect 'label' column for unique label count
 label_col = None
 for c in cols:
     if c.lower() in ("label", "model", "model id", "model_id", "class"):
         label_col = c
         break
 
-# process in chunks
 first = True
 total_kept = 0
 unique_collapsed = set()
@@ -55,28 +51,44 @@ unique_family = set()
 unique_label = set()
 
 reader = pd.read_csv(INPUT, chunksize=CHUNK, dtype=str)
+
 for chunk in reader:
     # normalize collapsed values for matching
     chunk[collapsed_col] = chunk[collapsed_col].fillna("")
     mask = ~chunk[collapsed_col].str.strip().str.lower().isin(EXCLUDE)
     kept = chunk[mask]
+
     if kept.empty:
         continue
-    # update stats
+
+    # update stats BEFORE renaming
     total_kept += len(kept)
     unique_collapsed.update(kept[collapsed_col].astype(str).str.strip().unique().tolist())
+
     if family_col and family_col in kept.columns:
         unique_family.update(kept[family_col].astype(str).str.strip().unique().tolist())
+
     if label_col and label_col in kept.columns:
         unique_label.update(kept[label_col].astype(str).str.strip().unique().tolist())
 
+    # --- Rename specific columns in the output ---
+    rename_map = {}
+    if "input_text" in kept.columns:
+        rename_map["input_text"] = "Scientific_problem_descriptions"
+    if label_col and label_col in kept.columns:
+        rename_map[label_col] = "Full_ID"
+    if collapsed_col and collapsed_col in kept.columns:
+        rename_map[collapsed_col] = "Short_ID"
+    if rename_map:
+        kept = kept.rename(columns=rename_map)
+
+    # write output
     if first:
         kept.to_csv(OUTPUT, index=False, mode="w")
         first = False
     else:
         kept.to_csv(OUTPUT, index=False, header=False, mode="a")
 
-# print report
 print(f"Filtered output written to: {OUTPUT}")
 print(f"Rows after filtering: {total_kept}")
 print(f"Unique collapsed_label: {len(unique_collapsed)}")
@@ -89,8 +101,6 @@ if family_col:
 else:
     print("Unique family_label: column not detected")
 
-# save a small report json
-import json
 report = {
     "rows": int(total_kept),
     "unique_collapsed_label": int(len(unique_collapsed)),
