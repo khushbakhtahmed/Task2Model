@@ -1,26 +1,3 @@
-#!/usr/bin/env python3
-"""
-LinearSVM + TF-IDF (multi-label Top-k evaluation + Family metrics + nDCG@k)
-
-Train:
-  - filtered_top100_modelcard_labels.csv
-    required: input_text + collapsed_label (preferred) or label
-    required for family metrics: a family column like 'family label' / 'family_label' / etc.
-
-Test:
-  - manualevalreferencefromgpt.csv
-    required: Queries + gpt
-
-Evaluation (multi-label):
-  - GPT cell provides a set of acceptable labels (unordered).
-  - Hit@k: 1 if ANY acceptable label appears in top-k predictions.
-  - nDCG@k: binary relevance per rank position (1 if predicted label is acceptable).
-  - Family metrics: Hit@k + nDCG@k at family level (using train mapping).
-
-Label matching:
-  - exact OR suffix-after-slash OR substring-either-way (BM25-style).
-"""
-
 import re
 import json
 import time
