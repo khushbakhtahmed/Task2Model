@@ -21,7 +21,7 @@ from nltk.corpus import stopwords
 # --------------------
 HERE = Path(__file__).resolve().parent
 TRAIN_CSV = HERE / "Task2Model.csv"
-TEST_CSV  = HERE / "manualevalreferencefromgpt.csv"
+TEST_CSV  = HERE / "manualevalreferencefromllm.csv"
 
 OUT_DIR = HERE / "train_group"  # avoid overwrite
 RANDOM_STATE = 42
