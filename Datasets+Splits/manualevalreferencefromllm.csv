@@ -1,0 +1,524 @@
+Queries,LLM Recommendations
+"I need a fast, lightweight sentence-embedding model for semantic search on short customer queries (<20 words). Preferably multilingual, and must run on CPU.","dbpedia
+all-mpnet-base-v2
+roberta-base
+roberta-large
+xlm-roberta-large
+gemini
+t5-small
+t5-large
+
+opt-6.7b
+"
+"Which model is best for extracting key entities (person, organization, date) from messy, OCR-scanned documents with low accuracy?","
+roberta-base
+bert-base-cased
+finbert
+biogpt
+t5-small
+t5-large
+
+gpt-j-6b
+opt-6.7b
+"
+Recommend a model for generating concise product descriptions from bullet-point attributes. Must avoid hallucinations and be license-friendly for commercial use.,"gemini 
+all-minilm-l6-v2
+roberta-base
+roberta-large
+xlm-roberta-large
+
+biogpt
+t5-small
+opt-6.7b
+"
+"Looking for a transformer suited for code summarization (Python + Java), optimized for inference speed, not training.","all-minilm-l6-v2
+roberta-base
+roberta-large
+xlm-roberta-base
+finbert
+biogpt
+t5-small
+t5-large
+mistral-7b
+
+"
+"Which model should I use to classify toxic vs. non-toxic messages in a multilingual social media moderation system, especially for low-resource languages?","
+xlm-roberta-large
+xlm-roberta-large-finetuned
+roberta-base
+roberta-large
+all-mpnet-base-v2
+bm25
+hatebert
+gemini
+opt-6.7b
+"
+I need a small model (<500M params) for real-time speech-to-text transcription of English lectures with noisy audio.,"llama2-7b 
+roberta-base
+gsm8k 
+xlm-roberta-large
+finbert
+bart-base
+t5-small
+t5-large
+bart-base
+
+"
+Recommend an LLM that performs well on mathematical reasoning with long context (20k tokens) but has low GPU memory requirements.,"
+
+llama2-7b 
+xlm-roberta-base
+xlm-roberta-large
+finbert
+t5-small
+t5-large
+falcon-7b
+gpt-j-6b
+"
+Which model can convert informal WhatsApp messages into formal email text while preserving content but changing tone?,"mistral-7b
+all-minilm-l6-v2
+roberta-base
+roberta-large
+xlm-roberta-large
+finbert
+biogpt
+en-core-web-sm
+
+"
+"Best model for biomedical NER focused on gene–disease interactions, with preference for models trained on PubMed or BioBERT variants?","opt-30b
+all-minilm-l6-v2
+roberta-base
+roberta-large
+xlm-roberta-large
+finbert
+llama2-7b 
+clinicalbert
+"
+I need a model capable of detecting whether a given research paper actually used a listed ML model or just mentions it. Prefer high accuracy on long texts.,"bm25
+all-minilm-l6-v2
+roberta-base
+xlm-roberta-large
+biogpt
+heBERT
+t5-large
+bert-base 
+"
+"Which model can summarize long legal contracts (~50 pages) into 1–2-page briefs, preserving all key clauses?","gemini 
+roberta-large
+xlm-roberta-base
+all-mpnet-base-v2
+bm25
+gpt2
+biogpt
+finbert
+mistral-7b
+t5-small
+"
+"I need a multilingual sentiment analysis model that works well on social media posts containing slang, emojis, and hashtags.","heBERT
+roberta-large
+xlm-roberta-large
+biogpt
+t5-small
+t5-large
+falcon-7b
+gpt-j-6b
+opt-6.7b
+all-mpnet-base-v2
+"
+"Recommend a model for translating technical manuals from German to English, ensuring domain-specific terminology is preserved.","bert-base-uncased
+roberta-base
+xlm-roberta-large
+all-mpnet-base-v2
+bm25
+gpt2
+biogpt
+t5-large
+qwen2.5
+
+"
+Looking for a transformer that can generate synthetic training data for question-answering on finance datasets.,"finbert
+flan-t5-xl
+flan-t5-xxl
+flan-ul2
+t5-11b
+t5-3b
+mistral-7b-instruct-v0.2
+vicuna-7b-v1.5
+llama-3.1-8b-instruct
+"
+Which model is suitable for extracting structured tables from PDF invoices and converting them to JSON automatically?,"gemini
+xlm-roberta-base
+all-mpnet-base-v2
+bm25
+mistral-7b
+t5-base
+finbert
+biogpt
+opt-6.7b
+starcoder
+"
+I want a text-to-speech model that can produce natural-sounding voices in multiple accents for educational videos.,"gemini
+phi-2
+phi-1
+tinyllama
+mistral-7b
+mistral-7b-instruct-v0.2
+vicuna-7b-v1.5
+llama-3.1-8b-instruct
+flan-t5-xxl
+flan-ul2"
+Best model for summarizing multi-turn customer support chats into concise action items.,"bert-base-cased
+roberta-large
+xlm-roberta-base
+all-minilm-l6-v2
+bm25
+mistral-7b
+llama-3-8b
+t5-base
+finbert
+biogpt
+"
+"I need a model to detect and correct grammatical errors in essays written by non-native English speakers, including idiomatic usage.","gemini
+bloomz
+biogpt
+t5-11b
+finbert
+t5-large
+mistral-7b-instruct-v0.2
+llama-3.1-8b-instruct
+vicuna-7b-v1.5
+gemma-7b"
+"Which model can classify news articles into very fine-grained topics (e.g., ‘US tech IPO’ vs ‘US tech funding’ vs ‘US tech layoffs’)?","llama2-7b 
+roberta-large
+bert-base-uncased
+bm25
+finbert
+biogpt
+gemini
+flan-t5-xxl
+bloomz
+gpt2"
+Recommend a small LLM for real-time code autocompletion in Jupyter notebooks for Python and R.,"santacoder
+starcoder
+gpt2
+codellama-7b
+opt-6.7b
+opt-2.7b
+opt-1.3b
+gpt-j-6b
+tinyllama
+mistral-7b"
+"Looking for a model that can detect subtle hate speech or microaggressions in forum posts, with low false positives.","
+finbert
+gpt2
+metamodel
+bloomz
+roberta-base
+bloomz
+mistral-7b
+all-mpnet-base-v2
+dbpedia
+"
+I need a model that can answer multi-hop questions based on a combination of Wikipedia and internal company documentation.,"metamodel
+
+llama-2-7b-chat-hf
+gemma-2b
+clinicalbert
+gemini
+labse
+llama-2-70b-chat
+dbpedia
+t5-3b
+"
+Which model can detect if a scientific abstract contains reproducible experiments vs. just theoretical claims?,"roberta-large
+llama2-7b
+clinicalbert
+phi-1
+flan-ul2
+bloomz
+mistral-7b
+tinyllama
+all-mpnet-base-v2
+heBERT
+"
+"Best model for aligning transcripts of bilingual lectures (e.g., English + Spanish) with timestamps for subtitle generation.","heBERT 
+phi-2
+phi-1
+tinyllama
+mistral-7b
+mistral-7b-instruct-v0.2
+vicuna-7b-v1.5
+llama-3.1-8b-instruct
+flan-t5-xxl
+flan-ul2"
+"I want a model that can identify whether code snippets use deprecated functions or insecure coding practices, across multiple languages.","llama-3.1-70b
+all-mpnet-base-v2
+roberta-base
+gpt2
+xlm-roberta-base
+finbert
+heBERT
+biogpt
+t5-small
+opt-1.3b
+"
+I need a model to rank search results for an internal codebase where queries are short but documents are very long.,"t5-3b 
+all-mpnet-base-v2
+roberta-base
+roberta-large
+xlm-roberta-base
+heBERT
+biogpt
+t5-small
+opt-6.7b
+falcon-7b
+"
+I am looking for a model that can monitor live chat streams and trigger alerts when conversations are likely to escalate into abuse.,"llama2-7b
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+finbert
+biogpt
+gemini
+falcon-7b
+opt-6.7b
+"
+Which model can perform topic drift detection on news streams over several months?,"mistral-7b
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+t5-large
+biogpt
+heBERT-large
+opt-6.7b
+falcon-7b
+gpt-j-6b
+"
+I need an NLP model that can map natural-language questions to SQL queries over a rapidly changing database schema.,"mpt-7b
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+biogpt
+t5-large
+falcon-7b
+t5-3b
+"
+I want a model that can detect hallucinated citations in automatically generated academic text.,"opt-1.3b
+gemini
+all-mpnet-base-v2
+xlm-roberta-large
+gemini
+finbert
+biogpt
+t5-large
+falcon-7b
+opt-6.7b
+"
+I am searching for a system that can align spoken dialogue with slide content during live lectures.,"llama-2-7b-chat
+bert-base
+gpt2
+bm25
+all-mpnet-base-v2
+bert-base-uncased
+t5-large
+opt-6.7b
+falcon-7b
+gpt-j-6b
+"
+I need a model that can identify personally identifiable information in logs before they are stored for analytics.,"bert-base
+bm25
+t5-large
+bloomz
+falcon-7b
+mpt-7b
+baichuan-7b
+qwen-7b
+opt-6.7b
+all-mpnet-base-v2
+"
+Which model works well for intent recognition in voice assistants used by elderly users?,"gemini
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+biogpt
+t5-base
+falcon-7b
+opt-6.7b
+"
+I want to detect plagiarism across documents written in different languages.,"Turbo
+metamodel
+gpt2
+bm25
+all-mpnet-base-v2
+bert-base-uncased
+t5-large
+gpt-j-6b
+mistral-7b
+xlm-roberta-large
+"
+I need a model that can classify bug reports by root cause rather than surface keywords.,"llama-2-13b
+gpt2
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+phi-1
+biogpt
+t5-large
+falcon-7b
+opt-6.7b
+bm25"
+Which NLP system can predict whether a user will reformulate a search query based on the initial query text?,"bm25
+phi-1
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+biogpt
+t5-small
+falcon-7b
+opt-6.7b
+"
+I am looking for a model that can identify causal relationships in climate science papers.,"bert-base-cased
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+finbert
+biogpt
+t5-large
+falcon-7b
+opt-6.7b
+"
+I need a system that can evaluate whether chatbot responses are helpful without access to ground-truth answers.,"gemini
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+finbert
+alpaca-7b
+
+"
+Which model can detect prompt injection attacks in retrieval-augmented generation pipelines?,"mistral-7b
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+heBERT
+biogpt
+t5-large
+opt-6.7b
+"
+I want an NLP model that can convert medical triage conversations into structured risk scores.,"gemini 
+all-minilm-l6-v2
+roberta-base
+roberta-large
+xlm-roberta-large
+finbert
+biogpt
+t5-small
+
+"
+I need a system that can identify missing compliance statements in financial reports.,"roberta-large
+bm25
+all-mpnet-base-v2
+gemini
+roberta-base
+heBERT
+biogpt
+t5-large
+falcon-7b
+opt-6.7b
+"
+Which model works best for extracting temporal event timelines from historical documents?,"Turbo
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+biogpt
+t5-large
+
+"
+I am looking for a model that can automatically route support tickets to the correct internal team.,"gemini
+bm25
+all-minilm-l6-v2
+xlm-roberta-large
+roberta-base
+finbert
+biogpt
+dbpedia
+
+llama-2-70b-chat "
+I need an NLP system that can assess the readability of government forms for non-native speakers.,"dbpedia
+bm25
+xlm-roberta-large
+roberta-base
+all-mpnet-base-v2
+finbert
+biogpt
+t5-large
+falcon-7b
+opt-6.7b
+"
+Which model can detect when user feedback indicates product churn risk rather than dissatisfaction.,"heBERT
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+mistral-7b
+
+
+"
+Which model can summarize long legal contracts and highlight clauses that pose potential compliance risks?,"gemini
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-base
+finbert
+roberta-large
+"
+Which NLP model can automatically grade student essays and provide detailed feedback on grammar and content quality?,"flan-t5-xxl
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+finbert
+biogpt
+t5-large
+
+"
+Which NLP model can analyze patient-doctor chat transcripts to generate risk scores for urgent intervention?,"bloomz
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+gemini
+
+t5-large
+
+biogpt"
+Which model can identify causal relationships and precedents in legal case documents?,"roberta-base
+bm25
+all-mpnet-base-v2
+xlm-roberta-large
+roberta-large
+finbert
+biogpt
+"
+Which NLP model can analyze logs and detect patterns indicative of insider threats?,"bm25
+all-minilm-l6-v2
+roberta-large
+xlm-roberta-large
+finbert
+biogpt
+t5-small
+flan-t5-xl
+roberta-base
+gpt-j-6b
+"
